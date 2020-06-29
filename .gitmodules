@@ -1,3 +1,9 @@
 [submodule "Renderent/vendor/spdlog"]
 	path = Renderent/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Renderent/vendor/glfw"]
+	path = Renderent/vendor/glfw
+	url = https://github.com/TheCherno/glfw
+[submodule "Renderent/vendor/imgui"]
+	path = Renderent/vendor/imgui
+	url = https://github.com/TheCherno/imgui

@@ -4,6 +4,21 @@
     <Filter Include="Renderent">
       <UniqueIdentifier>{EC9D1F7C-5808-D4F2-A146-85980DF0B147}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderent\Event">
+      <UniqueIdentifier>{3DE016B8-A96B-847C-B27C-07711E87E07C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderent\ImGui">
+      <UniqueIdentifier>{16D459B8-825F-C77C-8B70-4A71F77A237D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderent\Platform">
+      <UniqueIdentifier>{C0436C5F-AC27-2DB5-1588-2708018B1737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderent\Platform\OpenGL">
+      <UniqueIdentifier>{F4345F9C-60F7-9226-A9A7-21B315A96B04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderent\Platform\Windows">
+      <UniqueIdentifier>{FAAD6180-E6BD-0D51-4F77-726F3BA6FCE9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderent.h" />
@@ -16,16 +31,72 @@
     <ClInclude Include="src\Renderent\Entrypoint.h">
       <Filter>Renderent</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderent\Event\Event.h">
+      <Filter>Renderent\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Event\KeyEvent.h">
+      <Filter>Renderent\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Event\MouseEvent.h">
+      <Filter>Renderent\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Event\WindowEvent.h">
+      <Filter>Renderent\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\ImGui\ImGuiLayer.h">
+      <Filter>Renderent\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Input.h">
+      <Filter>Renderent</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Layer.h">
+      <Filter>Renderent</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\LayerStack.h">
+      <Filter>Renderent</Filter>
+    </ClInclude>
     <ClInclude Include="src\Renderent\Log.h">
       <Filter>Renderent</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderent\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Renderent\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Platform\Windows\WindowsInput.h">
+      <Filter>Renderent\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Platform\Windows\WindowsWindow.h">
+      <Filter>Renderent\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Window.h">
+      <Filter>Renderent</Filter>
+    </ClInclude>
+    <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Renderent\Application.cpp">
       <Filter>Renderent</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderent\ImGui\ImGuilLayer.cpp">
+      <Filter>Renderent\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\Layer.cpp">
+      <Filter>Renderent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\LayerStack.cpp">
+      <Filter>Renderent</Filter>
+    </ClCompile>
     <ClCompile Include="src\Renderent\Log.cpp">
       <Filter>Renderent</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderent\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Renderent\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\Platform\Windows\WindowsInput.cpp">
+      <Filter>Renderent\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Renderent\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\repch.cpp" />
   </ItemGroup>
 </Project>

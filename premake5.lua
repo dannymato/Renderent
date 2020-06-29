@@ -1,5 +1,6 @@
 workspace "Engine"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations {
         "Debug",
@@ -9,13 +10,26 @@ workspace "Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Renderent/vendor/glfw/include"
+IncludeDir["GLAD"] = "Renderent/vendor/GLAD/include"
+IncludeDir["ImGui"] = "Renderent/vendor/imgui"
+
+include "Renderent/vendor/glfw"
+include "Renderent/vendor/GLAD"
+include "Renderent/vendor/imgui"
+
 project "Renderent"
     location "Renderent"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "repch.h"
+    pchsource "Renderent/src/repch.cpp"
 
     files {
         "%{prj.name}/src/**.h",
@@ -23,16 +37,26 @@ project "Renderent"
     }
 
     includedirs {
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/src",
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.GLAD}",
+        "%{IncludeDir.ImGui}"
+    }
+
+    links {
+        "GLFW",
+        "GLAD",
+        "ImGui"
     }
     
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
         defines {
             "RE_PLATFORM_WINDOWS",
-            "RE_BUILD_DLL"
+            "RE_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands {
@@ -41,13 +65,16 @@ project "Renderent"
 
     filter "configurations:Debug" 
         defines "RE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "RE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
+        buildoptions "/MD"
         defines "RE_DIST"
 
 project "Sandbox"
@@ -82,13 +109,15 @@ project "Sandbox"
 
     filter "configurations:Debug" 
         defines "RE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "RE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
+        buildoptions "/MD"
         defines "RE_DIST"
-    
 
