@@ -9,15 +9,17 @@ public:
 	}
 
 	void OnEvent(Renderent::Event& event) override {
-		RE_TRACE("{0}", event);
 	}
+
+	virtual void OnImGuiRender() override {
+	}
+
 };
 
 class Sandbox : public Renderent::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushLayer(new Renderent::ImGuiLayer());
 	}
 
 	~Sandbox() {

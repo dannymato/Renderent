@@ -14,19 +14,12 @@ namespace Renderent {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnUpdate() override;
-		void OnEvent(Event& event) override;
-		void OnAttach() override;
-		void OnDetach() override;
-	private:
-		bool OnMouseButtonPressedEvent(MousePressedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnMouseReleasedEvent(MouseReleasedEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnWindowResizedEvent(WindowResizedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+
+		void Begin();
+		void End();
 
 	private:
 		float m_Time = 0.0;
