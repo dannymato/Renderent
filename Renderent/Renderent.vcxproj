@@ -146,8 +146,20 @@
     <ClInclude Include="src\Renderent\LayerStack.h" />
     <ClInclude Include="src\Renderent\Log.h" />
     <ClInclude Include="src\Renderent\MouseButtonCodes.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Renderent\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Renderent\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Renderent\Renderer\Buffer.h" />
+    <ClInclude Include="src\Renderent\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Renderent\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Renderent\Renderer\Renderer.h" />
+    <ClInclude Include="src\Renderent\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Renderent\Renderer\Shader.h" />
+    <ClInclude Include="src\Renderent\Renderer\VertexArray.h" />
     <ClInclude Include="src\Renderent\Window.h" />
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
@@ -158,8 +170,19 @@
     <ClCompile Include="src\Renderent\Layer.cpp" />
     <ClCompile Include="src\Renderent\LayerStack.cpp" />
     <ClCompile Include="src\Renderent\Log.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Renderent\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Renderent\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

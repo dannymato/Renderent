@@ -5,6 +5,9 @@
 #include "Renderent/Event/MouseEvent.h"
 #include "Renderent/Event/KeyEvent.h"
 #include "Renderent/Event/WindowEvent.h"
+#include "Renderent/Renderer/GraphicsContext.h"
+
+#include "Renderent/Platform/OpenGL/OpenGLContext.h"
 
 #include <glad/glad.h>
 
@@ -33,6 +36,8 @@ namespace Renderent {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
+		
+
 		RE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		if (!s_GLFWInitialized) {
@@ -43,10 +48,11 @@ namespace Renderent {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
+		
+		m_Context = new OpenGLContext(m_Window);
+		
+		m_Context->Init();
 
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		RE_CORE_ASSERT(status, "Failed to initialize Glad!");
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
@@ -140,9 +146,10 @@ namespace Renderent {
 	}
 
 	void WindowsWindow::OnUpdate() {
-
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		
+		m_Context->SwapBuffers();
+		
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {

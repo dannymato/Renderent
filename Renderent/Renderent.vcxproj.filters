@@ -71,6 +71,18 @@
       <Filter>Renderent</Filter>
     </ClInclude>
     <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\Renderent\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Renderent\Renderer\Shader.h" />
+    <ClInclude Include="src\Renderent\Renderer\Buffer.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Renderent\Renderer\Renderer.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Renderent\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Renderent\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Renderent\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Renderent\Application.cpp">
@@ -98,5 +110,16 @@
       <Filter>Renderent\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Renderent\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include "Renderent/Window.h"
+#include "Renderent/Renderer/GraphicsContext.h"
 
 namespace Renderent {
 	class WindowsWindow : public Window {
@@ -24,6 +25,7 @@ namespace Renderent {
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;

@@ -8,6 +8,10 @@
 #include "Renderent/Event/MouseEvent.h"
 #include "Renderent/ImGui/ImGuiLayer.h"
 
+#include "Renderent/Renderer/Shader.h"
+#include "Renderent/Renderer/Buffer.h"
+#include "Renderent/Renderer/VertexArray.h"
+
 namespace Renderent {
 
 
@@ -37,6 +41,12 @@ namespace Renderent {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		static Application* s_Instance;
+
+		std::shared_ptr<ShaderProgram> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<VertexArray> m_SquareVA;
+		std::shared_ptr<ShaderProgram> m_BlueShader;
 	};
 
 	// To be defined by client
