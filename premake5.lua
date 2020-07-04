@@ -15,6 +15,7 @@ IncludeDir["GLFW"] =     "Renderent/vendor/glfw/include"
 IncludeDir["GLAD"] =     "Renderent/vendor/GLAD/include"
 IncludeDir["ImGui"] =    "Renderent/vendor/imgui"
 IncludeDir["glm"] =      "Renderent/vendor/glm"
+IncludeDir["stb_image"] = "Renderent/vendor/stb_image"
 
 include "Renderent/vendor/glfw"
 include "Renderent/vendor/GLAD"
@@ -35,7 +36,9 @@ project "Renderent"
 
 	files {
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 	}
 
 	includedirs {
@@ -44,7 +47,8 @@ project "Renderent"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	defines {
@@ -98,6 +102,7 @@ project "Sandbox"
 	includedirs {
 		"Renderent/vendor/spdlog/include",
 		"Renderent/src",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}"
 	}
 

@@ -7,10 +7,7 @@
 #include "Renderent/Event/KeyEvent.h"
 #include "Renderent/Event/MouseEvent.h"
 #include "Renderent/ImGui/ImGuiLayer.h"
-
-#include "Renderent/Renderer/Shader.h"
-#include "Renderent/Renderer/Buffer.h"
-#include "Renderent/Renderer/VertexArray.h"
+#include "Renderent/Core/TimeStep.h"
 
 namespace Renderent {
 
@@ -19,6 +16,7 @@ namespace Renderent {
 	{
 	public:
 		Application();
+		Application(const WindowProps& props);
 		virtual ~Application();
 
 		void Run();
@@ -35,6 +33,7 @@ namespace Renderent {
 	private:
 		bool OnWindowClose(WindowClosedEvent& e);
 
+	private:
 		LayerStack m_LayerStack;
 
 		std::unique_ptr<Window> m_Window;
@@ -42,11 +41,7 @@ namespace Renderent {
 		bool m_Running = true;
 		static Application* s_Instance;
 
-		std::shared_ptr<ShaderProgram> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<VertexArray> m_SquareVA;
-		std::shared_ptr<ShaderProgram> m_BlueShader;
+		float m_LastFrameTime = 0.0f;
 	};
 
 	// To be defined by client

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef RE_PLATFORM_WINDOWS
 #ifdef RE_DYNAMIC_LINK
 	#ifdef  RE_BUILD_DLL
@@ -27,4 +29,15 @@
 #endif
 #define BIT(x) (1 << x)
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+#define RE_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
+
+namespace Renderent {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}

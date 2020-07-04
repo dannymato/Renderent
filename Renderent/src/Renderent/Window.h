@@ -9,11 +9,13 @@ namespace Renderent {
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
+		bool VSync;
 
 		WindowProps(const std::string& title = "Renderent Engine",
 			unsigned int width = 1280,
-			unsigned int height = 720
-			) : Title(title), Width(width), Height(height) {}
+			unsigned int height = 720,
+			bool vsync = true
+			) : Title(title), Width(width), Height(height), VSync(vsync) {}
 	};
 
 	class RENDERENT_API Window {
