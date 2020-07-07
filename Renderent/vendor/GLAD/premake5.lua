@@ -1,6 +1,6 @@
 project "GLAD"
 	kind "StaticLib"
-	language "C"
+	language "C++"
 	staticruntime "on"
 
 
@@ -20,8 +20,10 @@ project "GLAD"
 
 	filter "system:linux"
 		pic "On"
-
 		systemversion "latest"
+		buildoptions {
+			"--whole-archive"
+		}
 
 	filter "system:windows"
 		systemversion "latest"

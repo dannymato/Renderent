@@ -9,6 +9,7 @@
 #include <utility>
 #include <algorithm>
 #include <functional>
+#include <signal.h>
 
 #include <string>
 #include <sstream>

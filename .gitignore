@@ -1,8 +1,8 @@
 #Directories
 .vs/
 bin*/
-
+.vscode/
 
 # Files
-
+Makefile
 *.user
