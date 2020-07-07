@@ -1,7 +1,7 @@
 #pragma once
 #include "repch.h"
 #include "Renderent/Event/Event.h"
-#include "Renderent/Core.h"
+#include "Renderent/Core/Core.h"
 
 namespace Renderent {
 
@@ -37,6 +37,8 @@ namespace Renderent {
 		virtual void* GetNativeWindow() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
+
+		virtual float GetTime() = 0;
 
 	};
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderent/Input.h"
+#include "Renderent/Core/Input.h"
 
 namespace Renderent {
 

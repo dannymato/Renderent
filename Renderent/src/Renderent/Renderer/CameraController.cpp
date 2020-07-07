@@ -1,9 +1,9 @@
 #include "repch.h"
 #include "CameraController.h"
 
-#include "Renderent/Input.h"
-#include "Renderent/KeyCodes.h"
-#include "Renderent/Core.h"
+#include "Renderent/Core/Input.h"
+#include "Renderent/Core/KeyCodes.h"
+#include "Renderent/Core/Core.h"
 
 namespace Renderent {
 

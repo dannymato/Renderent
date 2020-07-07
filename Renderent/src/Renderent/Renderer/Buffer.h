@@ -39,6 +39,7 @@ namespace Renderent {
 		}
 
 		RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
 	}
 
 	struct BufferElement {
@@ -82,6 +83,8 @@ namespace Renderent {
 			case ShaderDataType::Mat4:
 				return 4 * 4;
 			}
+			RE_CORE_ASSERT(false, "Unknown ShaderDataType");
+			return 0;
 		}
 	};
 

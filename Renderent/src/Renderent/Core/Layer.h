@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Renderent/Core.h"
-#include "Renderent/Event/Event.h"
+#include "Renderent/Core/Core.h"
 #include "Renderent/Core/TimeStep.h"
+#include "Renderent/Event/Event.h"
 
 namespace Renderent {
 

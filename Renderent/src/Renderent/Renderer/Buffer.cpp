@@ -2,8 +2,7 @@
 #include "Buffer.h"
 
 #include "Renderent/Platform/OpenGL/OpenGLBuffer.h"
-
-#include "Renderer.h"
+#include "Renderent/Renderer/Renderer.h"
 
 namespace Renderent {
 
@@ -16,6 +15,8 @@ namespace Renderent {
 			return new OpenGLVertexBuffer(size, vertices);
 		}
 
+		RE_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
 	}
 
 	IndexBuffer* IndexBuffer::Create(uint32_t count, uint32_t* indices) {
@@ -26,6 +27,9 @@ namespace Renderent {
 		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(count, indices);
 		}
+
+		RE_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
 	}
 
 }

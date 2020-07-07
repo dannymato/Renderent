@@ -1,8 +1,10 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include "VertexArray.h"
 #include <memory>
+
+#include "Renderent/Renderer/VertexArray.h"
+
+#include <glm/glm.hpp>
 
 namespace Renderent {
 

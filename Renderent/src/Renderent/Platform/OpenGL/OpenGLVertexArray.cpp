@@ -18,6 +18,8 @@ namespace Renderent {
 		case ShaderDataType::Mat4: return GL_FLOAT;
 		case ShaderDataType::Mat3: return GL_FLOAT;
 		}
+		RE_CORE_ASSERT(false, "Unknown ShaderDataType");
+		return 0;
 	}
 
 	OpenGLVertexArray::OpenGLVertexArray()

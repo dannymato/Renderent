@@ -1,13 +1,13 @@
 #include "repch.h"
 #include "WindowsWindow.h"
-#include "Renderent/Window.h"
-#include "Renderent/Core.h"
-#include "Renderent/Event/MouseEvent.h"
-#include "Renderent/Event/KeyEvent.h"
-#include "Renderent/Event/WindowEvent.h"
-#include "Renderent/Renderer/GraphicsContext.h"
 
+#include "Renderent/Core/Core.h"
+#include "Renderent/Core/Window.h"
+#include "Renderent/Event/KeyEvent.h"
+#include "Renderent/Event/MouseEvent.h"
+#include "Renderent/Event/WindowEvent.h"
 #include "Renderent/Platform/OpenGL/OpenGLContext.h"
+#include "Renderent/Renderer/GraphicsContext.h"
 
 #include <glad/glad.h>
 
@@ -164,6 +164,10 @@ namespace Renderent {
 
 	bool WindowsWindow::IsVSync() const {
 		return m_Data.VSync;
+	}
+
+	float WindowsWindow::GetTime() {
+		return (float)glfwGetTime();
 	}
 
 }

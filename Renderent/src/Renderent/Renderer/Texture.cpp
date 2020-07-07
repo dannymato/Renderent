@@ -1,8 +1,8 @@
 #include "repch.h"
 #include "Texture.h"
 
-#include "Renderer.h"
 #include "Renderent/Platform/OpenGL/OpenGLTexture.h"
+#include "Renderent/Renderer/Renderer.h"
 
 namespace Renderent {
 	Ref<Texture2D> Texture2D::Create(const std::string& path)

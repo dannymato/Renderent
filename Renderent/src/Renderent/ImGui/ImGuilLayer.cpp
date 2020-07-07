@@ -1,13 +1,13 @@
 #include "repch.h"
 #include "ImGuiLayer.h"
 
-#include <imgui.h>
-#include "Renderent/Application.h"
-#include "Renderent/Core.h"
+#include "Renderent/Core/Application.h"
+#include "Renderent/Core/Core.h"
 
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
+#include <imgui.h>
 // temporary
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

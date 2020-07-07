@@ -1,7 +1,9 @@
 #pragma once
-#include <GLFW/glfw3.h>
-#include "Renderent/Window.h"
+
+#include "Renderent/Core/Window.h"
 #include "Renderent/Renderer/GraphicsContext.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Renderent {
 	class WindowsWindow : public Window {
@@ -19,6 +21,8 @@ namespace Renderent {
 		bool IsVSync() const override;
 
 		virtual void* GetNativeWindow() const override { return m_Window; }
+
+		virtual float GetTime() override;
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();

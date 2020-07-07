@@ -1,13 +1,14 @@
 #pragma once
-#include "Core.h"
-#include "Window.h"
-#include "Event/WindowEvent.h"
-#include "Renderent/Layer.h"
-#include "Renderent/LayerStack.h"
+
+#include "Renderent/Core/Core.h"
+#include "Renderent/Core/Layer.h"
+#include "Renderent/Core/LayerStack.h"
+#include "Renderent/Core/TimeStep.h"
+#include "Renderent/Core/Window.h"
 #include "Renderent/Event/KeyEvent.h"
 #include "Renderent/Event/MouseEvent.h"
+#include "Renderent/Event/WindowEvent.h"
 #include "Renderent/ImGui/ImGuiLayer.h"
-#include "Renderent/Core/TimeStep.h"
 
 namespace Renderent {
 

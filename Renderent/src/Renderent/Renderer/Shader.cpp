@@ -1,8 +1,8 @@
 #include "repch.h"
 #include "Shader.h"
 
-#include "Renderent/Renderer/Renderer.h"
 #include "Renderent/Platform/OpenGL/OpenGLShader.h"
+#include "Renderent/Renderer/Renderer.h"
 
 namespace Renderent {
 
@@ -18,7 +18,8 @@ namespace Renderent {
 		case RendererAPI::API::OpenGL:
 			return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
-
+		RE_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
 	}
 
 	Ref<Shader> Shader::Create(const std::string& filepath) {
@@ -30,6 +31,9 @@ namespace Renderent {
 		case RendererAPI::API::OpenGL:
 			return std::make_shared<OpenGLShader>(filepath);
 		}
+
+		RE_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
 
 	}
 

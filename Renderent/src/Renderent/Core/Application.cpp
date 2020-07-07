@@ -1,16 +1,12 @@
 #include "repch.h"
 #include "Application.h"
+
+#include "Renderent/Core/KeyCodes.h"
+#include "Renderent/Core/Input.h"
 #include "Renderent/Event/MouseEvent.h"
 #include "Renderent/Event/WindowEvent.h"
-#include "Input.h"
-
-#include "Renderer/RenderCommand.h"
-#include "Renderer/Renderer.h"
-
-#include "KeyCodes.h"
-
-#include <GLFW/glfw3.h>
-
+#include "Renderent/Renderer/RenderCommand.h"
+#include "Renderent/Renderer/Renderer.h"
 
 namespace Renderent {
 
@@ -65,7 +61,7 @@ namespace Renderent {
 
 		while (m_Running) {
 
-			float time = (float)glfwGetTime(); // Platform::GetTime
+			float time = m_Window->GetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 

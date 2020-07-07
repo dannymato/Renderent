@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Renderent/Core.h"
-#include "Layer.h"
-
 #include <vector>
+
+#include "Renderent/Core/Core.h"
+#include "Renderent/Core/Layer.h"
+
 
 namespace Renderent {
 

@@ -1,6 +1,8 @@
 #pragma once
+
 #include <string>
-#include "Renderent/Core.h"
+
+#include "Renderent/Core/Core.h"
 
 namespace Renderent {
 

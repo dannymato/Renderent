@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Renderent/Layer.h"
-#include "Renderent/Core.h"
+#include "Renderent/Core/Layer.h"
+#include "Renderent/Core/Core.h"
 #include "Renderent/Event/KeyEvent.h"
 #include "Renderent/Event/MouseEvent.h"
 #include "Renderent/Event/WindowEvent.h"

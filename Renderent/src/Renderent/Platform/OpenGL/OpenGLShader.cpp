@@ -1,11 +1,11 @@
 #include "repch.h"
 #include "OpenGLShader.h"
 
+#include <filesystem>
 #include <fstream>
 
-#include "glad/glad.h"
+#include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
-#include <filesystem>
 
 namespace Renderent {
 
@@ -16,6 +16,7 @@ namespace Renderent {
 			return GL_FRAGMENT_SHADER;
 
 		RE_CORE_ASSERT(false, "Unknown shader type!");
+		return 0;
 	}
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)

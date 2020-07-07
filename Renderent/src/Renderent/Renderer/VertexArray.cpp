@@ -1,11 +1,9 @@
 #include "repch.h"
 #include "VertexArray.h"
 
-#include "Renderent/Renderer/Renderer.h"
 #include "Renderent/Platform/OpenGL/OpenGLVertexArray.h"
+#include "Renderent/Renderer/Renderer.h"
 namespace Renderent {
-
-	
 
 	VertexArray* VertexArray::Create()
 	{
@@ -16,6 +14,8 @@ namespace Renderent {
 		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexArray();
 		}
+		RE_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
 	}
 
 }
