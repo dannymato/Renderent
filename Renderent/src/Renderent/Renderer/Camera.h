@@ -9,6 +9,8 @@ namespace Renderent {
 	public:
 
 		OrthographicCamera(float left, float right, float bottom, float top);
+		
+		void SetProjection(float left, float right, float bottom, float top);
 
 		void SetPosition(const glm::vec3& position) {
 			m_Position = position;
@@ -18,6 +20,7 @@ namespace Renderent {
 			m_Rotation = rotation;
 			RecalculateViewMatrix();
 		}
+
 
 		const glm::vec3& GetPosition() const { return m_Position; }
 		float GetRotation(float rotation) { return m_Rotation; }
@@ -38,6 +41,7 @@ namespace Renderent {
 		float m_Rotation = 0.0f;
 
 	};
+
 
 }
 

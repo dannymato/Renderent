@@ -9,7 +9,7 @@
 class ExampleLayer : public Renderent::Layer {
 public:
 	ExampleLayer() :
-		Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
+		Layer("Example"), m_CameraController(1920.0f / 1080.0f, true), m_CameraPosition(0.0f) {
 	
 		m_VertexArray.reset(Renderent::VertexArray::Create());
 
@@ -98,7 +98,7 @@ public:
 
 		)";
 
-		m_Shader.reset(Renderent::Shader::Create(vertexSrc, fragmentSrc));
+		m_TriangleShader = Renderent::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -133,44 +133,29 @@ public:
 
 		)";
 
-		m_FlatColorShader.reset(Renderent::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc2));
+		m_FlatColorShader = Renderent::Shader::Create("Flat Color"
+			, flatColorShaderVertexSrc, flatColorShaderFragmentSrc2);
 
-		m_TextureShader.reset(Renderent::Shader::Create("assets/shader/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shader/Texture.glsl");
 		
 		
 		m_Texture = Renderent::Texture2D::Create("Checkerboard.png");
 		m_ChernoLogoTexture = Renderent::Texture2D::Create("ChernoLogo.png");
 
 
-		std::dynamic_pointer_cast<Renderent::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Renderent::OpenGLShader>(m_TextureShader)->UploadUniformInt(0, "u_Texture");
+		std::dynamic_pointer_cast<Renderent::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Renderent::OpenGLShader>(textureShader)->UploadUniformInt(0, "u_Texture");
 	}
 
 	void OnUpdate(Renderent::Timestep timestep) override {
 
-		if (Renderent::Input::IsKeyPressed(RE_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * timestep;
-		else if (Renderent::Input::IsKeyPressed(RE_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * timestep;
-
-		if (Renderent::Input::IsKeyPressed(RE_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * timestep;
-		else if (Renderent::Input::IsKeyPressed(RE_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * timestep;
-
-		if (Renderent::Input::IsKeyPressed(RE_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * timestep;
-		else if (Renderent::Input::IsKeyPressed(RE_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * timestep;
-
+		
+		m_CameraController.OnUpdate(timestep);
 
 		Renderent::RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 1.0f });
 		Renderent::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Renderent::Renderer::BeginScene(m_Camera);
+		Renderent::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
@@ -187,12 +172,14 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Renderent::Renderer::Submit(m_SquareVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Renderent::Renderer::Submit(m_SquareVA, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 		m_ChernoLogoTexture->Bind();
-		Renderent::Renderer::Submit(m_SquareVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Renderent::Renderer::Submit(m_SquareVA, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 
@@ -204,6 +191,7 @@ public:
 	}
 
 	void OnEvent(Renderent::Event& event) override {
+		m_CameraController.OnEvent(event);
 
 	}
 
@@ -216,13 +204,15 @@ public:
 
 
 private:
-	Renderent::Ref<Renderent::Shader> m_Shader;
+	Renderent::ShaderLibrary m_ShaderLibrary;
+
+	Renderent::Ref<Renderent::Shader> m_TriangleShader;
 	Renderent::Ref<Renderent::VertexArray> m_VertexArray;
 
 	Renderent::Ref<Renderent::VertexArray> m_SquareVA;
-	Renderent::Ref<Renderent::Shader> m_FlatColorShader, m_TextureShader;
+	Renderent::Ref<Renderent::Shader> m_FlatColorShader;
 
-	Renderent::OrthographicCamera m_Camera;
+	Renderent::OrthographicCameraController m_CameraController;
 	glm::vec3 m_CameraPosition;
 
 	float m_CameraRotation = 0.0f;

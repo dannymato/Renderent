@@ -32,6 +32,7 @@ namespace Renderent {
 
 	private:
 		bool OnWindowClose(WindowClosedEvent& e);
+		bool OnWindowResized(WindowResizedEvent& e);
 
 	private:
 		LayerStack m_LayerStack;
@@ -42,6 +43,8 @@ namespace Renderent {
 		static Application* s_Instance;
 
 		float m_LastFrameTime = 0.0f;
+
+		bool m_Minimized = false;
 	};
 
 	// To be defined by client

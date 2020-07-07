@@ -16,5 +16,6 @@
 #include "Renderent/Renderer/Camera.h"
 #include "Renderent/Renderer/Shader.h"
 #include "Renderent/Renderer/Texture.h"
+#include "Renderent/CameraController.h"
 
 #include "Renderent/Entrypoint.h"

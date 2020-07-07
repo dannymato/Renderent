@@ -11,13 +11,15 @@ namespace Renderent {
 
 	public:
 		OpenGLShader(const std::string& filePath);
-		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
 
 		virtual void Unbind() const override;
+
+		virtual const std::string& GetName() const override { return m_Name; };
 
 		void UploadUniformInt(const int& value, const std::string& name);
 
@@ -37,7 +39,7 @@ namespace Renderent {
 
 	private:
 		uint32_t m_ProgramRef;
-
+		std::string m_Name;
 	};
 
 }

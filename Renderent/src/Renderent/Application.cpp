@@ -50,6 +50,7 @@ namespace Renderent {
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowClosedEvent>(RE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizedEvent>(RE_BIND_EVENT_FN(Application::OnWindowResized));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
 			(*--it)->OnEvent(e);
@@ -68,15 +69,17 @@ namespace Renderent {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			// Run the on update for all the layers
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(timestep);
-
+			if (!m_Minimized) {
+				// Run the on update for all the layers
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(timestep);
+			}
 			// Run all imgui code
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 			m_ImGuiLayer->End();
+
 			m_Window->OnUpdate();
 			
 		}
@@ -87,6 +90,18 @@ namespace Renderent {
 		return true;
 	}
 
+	bool Application::OnWindowResized(WindowResizedEvent& e) {
+
+		if (e.GetWidth() == 0 || e.GetHeight() == 0) {
+			m_Minimized = true;
+			return false;
+		}
+		m_Minimized = false;
+
+		Renderer::OnWindowResized(e.GetWidth(), e.GetHeight());
+
+		return false;
+	}
 
 
 }
