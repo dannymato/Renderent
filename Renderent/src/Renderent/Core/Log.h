@@ -4,7 +4,7 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
-#include <Memory>
+#include <memory>
 
 namespace Renderent {
 	class RENDERENT_API Log

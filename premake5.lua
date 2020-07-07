@@ -52,7 +52,8 @@ project "Renderent"
 	}
 
 	defines {
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	links {
@@ -66,8 +67,12 @@ project "Renderent"
 		systemversion "latest"
 		defines {
 			"RE_PLATFORM_WINDOWS",
-			"RE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"RE_BUILD_DLL"
+		}
+	filter "system:linux"
+		systemversion "latest"
+		defines {
+			"RE_PLATFORM_LINUX"
 		}
 
 	filter "configurations:Debug" 
@@ -115,6 +120,23 @@ project "Sandbox"
 		systemversion "latest"
 		defines {
 			"RE_PLATFORM_WINDOWS"
+		}
+
+	filter "system:linux"
+		staticruntime "on"
+		systemversion "latest"
+		defines {
+			"RE_PLATFORM_LINUX"
+		}
+		links {
+			"Renderent",
+			"GLFW",
+			"GLAD",
+			"ImGui",
+			"GL",
+			"X11",
+			"dl",
+			"pthread"
 		}
 
 	filter "configurations:Debug" 

@@ -1,7 +1,7 @@
 #include "repch.h"
 #include "Renderer.h"
 
-#include "Renderent/Platform/OpenGl/OpenGLShader.h"
+#include "Renderent/Platform/OpenGL/OpenGLShader.h"
 
 namespace Renderent {
 
