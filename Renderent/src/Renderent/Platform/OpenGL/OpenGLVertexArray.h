@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Renderent/Renderer/VertexArray.h"
 #include "Renderent/Renderer/Buffer.h"
+#include "Renderent/Renderer/VertexArray.h"
 
 namespace Renderent {
 

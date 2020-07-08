@@ -1,5 +1,4 @@
 #include "repch.h"
-
 #include "WindowsInput.h"
 
 #include "Renderent/Core/Application.h"

@@ -1,7 +1,8 @@
 #pragma once
 #include "repch.h"
-#include "Renderent/Event/Event.h"
+
 #include "Renderent/Core/Core.h"
+#include "Renderent/Event/Event.h"
 
 namespace Renderent {
 

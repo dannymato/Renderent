@@ -1,5 +1,5 @@
 #pragma once
-#include "Renderent/Log.h"
+#include "Renderent/Core/Log.h"
 
 
 #ifdef RE_PLATFORM_WINDOWS
@@ -13,7 +13,6 @@ int main(int argc, char** argv) {
 	app->Run();
 	delete app;
 }
-#endif
 #elif RE_PLATFORM_LINUX
 
 extern Renderent::Application* Renderent::CreateApplication();

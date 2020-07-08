@@ -2,7 +2,7 @@
 #include "OpenGLTexture.h"
 
 #include <glad/glad.h>
-#include "stb_image.h"
+#include <stb_image.h>
 
 Renderent::OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
 	: m_Path(path)

@@ -1,10 +1,9 @@
 #pragma once
 
-#include "Renderent/Renderer/Camera.h"
 #include "Renderent/Core/TimeStep.h"
-
-#include "Renderent/Event/WindowEvent.h"
 #include "Renderent/Event/MouseEvent.h"
+#include "Renderent/Event/WindowEvent.h"
+#include "Renderent/Renderer/Camera.h"
 
 namespace Renderent {
 
