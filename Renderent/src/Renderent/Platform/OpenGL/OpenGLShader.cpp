@@ -49,6 +49,41 @@ namespace Renderent {
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetMat4(const glm::mat4& matrix, const std::string& name)
+	{
+		UploadUniformMat4(matrix, name);
+	}
+
+	void OpenGLShader::SetMat3(const glm::mat3& matrix, const std::string& name)
+	{
+		UploadUniformMat3(matrix, name);
+	}
+
+	void OpenGLShader::SetFloat4(const glm::vec4& value, const std::string& name) 
+	{
+		UploadUniformFloat4(value, name);
+	}
+
+	void OpenGLShader::SetFloat3(const glm::vec3& value, const std::string& name) 
+	{
+		UploadUniformFloat3(value, name);
+	}
+
+	void OpenGLShader::SetFloat2(const glm::vec2& value, const std::string& name) 
+	{
+		UploadUniformFloat2(value, name);
+	}
+
+	void OpenGLShader::SetFloat(const float& value, const std::string& name) 
+	{
+		UploadUniformFloat(value, name);
+	}
+
+	void OpenGLShader::SetInt(const int& value, const std::string& name)
+	{
+		UploadUniformInt(value, name);
+	}
+
 	void OpenGLShader::UploadUniformInt(const int& value, const std::string& name)
 	{
 		GLint location = glGetUniformLocation(m_ProgramRef, name.c_str());

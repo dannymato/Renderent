@@ -130,7 +130,7 @@ namespace Renderent {
 	public:
 		virtual ~VertexBuffer() {}
 
-		static VertexBuffer* Create(size_t size, float* data);
+		static Ref<VertexBuffer> Create(size_t size, float* data);
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
@@ -145,7 +145,7 @@ namespace Renderent {
 	public:
 		virtual ~IndexBuffer() {}
 
-		static IndexBuffer* Create(uint32_t count, uint32_t* data);
+		static Ref<IndexBuffer> Create(uint32_t count, uint32_t* data);
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;

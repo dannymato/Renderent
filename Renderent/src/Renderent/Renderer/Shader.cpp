@@ -16,7 +16,7 @@ namespace Renderent {
 			RE_CORE_ASSERT(false, "None API is not supported");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+			return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
@@ -29,7 +29,7 @@ namespace Renderent {
 			RE_CORE_ASSERT(false, "None API is not supported");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(filepath);
+			return CreateRef<OpenGLShader>(filepath);
 		}
 
 		RE_CORE_ASSERT(false, "Unknown RendererAPI");

@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Renderent\vendor\i
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renderent", "Renderent\Renderent.vcxproj", "{EC9D1F7C-5808-D4F2-A146-85980DF0B147}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "box2d", "Sandbox\vendor\box2d\box2d.vcxproj", "{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -48,6 +50,12 @@ Global
 		{EC9D1F7C-5808-D4F2-A146-85980DF0B147}.Dist|x64.Build.0 = Dist|x64
 		{EC9D1F7C-5808-D4F2-A146-85980DF0B147}.Release|x64.ActiveCfg = Release|x64
 		{EC9D1F7C-5808-D4F2-A146-85980DF0B147}.Release|x64.Build.0 = Release|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Debug|x64.ActiveCfg = Debug|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Debug|x64.Build.0 = Debug|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Dist|x64.ActiveCfg = Dist|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Dist|x64.Build.0 = Dist|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Release|x64.ActiveCfg = Release|x64
+		{E4442B0F-5059-53C0-19DB-F61F85AE4FF1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

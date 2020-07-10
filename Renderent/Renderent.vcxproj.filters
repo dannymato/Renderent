@@ -10,6 +10,9 @@
     <Filter Include="src\Renderent\Core">
       <UniqueIdentifier>{FB7548A9-E759-09FF-50BA-03523CBDF380}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Renderent\Debug">
+      <UniqueIdentifier>{799063D2-E5F1-40E0-6E5F-8792DABF779F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Renderent\Event">
       <UniqueIdentifier>{54077FD2-C068-5CE0-49D6-A292B536939F}</UniqueIdentifier>
     </Filter>
@@ -72,6 +75,9 @@
     <ClInclude Include="src\Renderent\Core\Window.h">
       <Filter>src\Renderent\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderent\Debug\Instrumentor.h">
+      <Filter>src\Renderent\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Renderent\Event\Event.h">
       <Filter>src\Renderent\Event</Filter>
     </ClInclude>
@@ -127,6 +133,9 @@
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderent\Renderer\Renderer.h">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Renderer\Renderer2D.h">
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderent\Renderer\RendererAPI.h">
@@ -204,6 +213,9 @@
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderent\Renderer\Renderer.cpp">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\Renderer\Renderer2D.cpp">
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderent\Renderer\RendererAPI.cpp">

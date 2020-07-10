@@ -2,6 +2,7 @@
 #include "Renderer.h"
 
 #include "Renderent/Platform/OpenGL/OpenGLShader.h"
+#include "Renderent/Renderer/Renderer2D.h"
 
 namespace Renderent {
 
@@ -29,6 +30,7 @@ namespace Renderent {
 	void Renderer::Init() {
 
 		RenderCommand::Init();
+		Renderer2D::Init();
 
 	}
 

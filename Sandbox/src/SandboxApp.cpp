@@ -1,5 +1,7 @@
+#include "Sandbox2D.h"
+
 #include <Renderent.h>
-#include "Renderent/Platform/OpenGL/OpenGLShader.h"
+#include <Renderent/Core/Entrypoint.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -10,7 +12,7 @@ public:
 	ExampleLayer() :
 		Layer("Example"), m_CameraController(1920.0f / 1080.0f, true), m_CameraPosition(0.0f) {
 	
-		m_VertexArray.reset(Renderent::VertexArray::Create());
+		m_VertexArray = Renderent::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -19,7 +21,7 @@ public:
 		};
 
 		Renderent::Ref<Renderent::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Renderent::VertexBuffer::Create(sizeof(vertices), vertices));
+		vertexBuffer = Renderent::VertexBuffer::Create(sizeof(vertices), vertices);
 
 		Renderent::BufferLayout layout = {
 			{Renderent::ShaderDataType::Float3, "a_Position"},
@@ -34,10 +36,10 @@ public:
 		uint32_t indices[3] = { 0, 1, 2 };
 
 		Renderent::Ref<Renderent::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Renderent::IndexBuffer::Create(3, indices));
+		indexBuffer = Renderent::IndexBuffer::Create(3, indices);
 		m_VertexArray->AddIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Renderent::VertexArray::Create());
+		m_SquareVA = Renderent::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f,  0.0f, 0.0f, 0.0f,
@@ -47,7 +49,7 @@ public:
 		};
 
 		Renderent::Ref<Renderent::VertexBuffer> squareVB;
-		squareVB.reset(Renderent::VertexBuffer::Create(sizeof(squareVertices), squareVertices));
+		squareVB = Renderent::VertexBuffer::Create(sizeof(squareVertices), squareVertices);
 
 		squareVB->SetLayout({
 			{Renderent::ShaderDataType::Float3, "a_Position"},
@@ -58,7 +60,7 @@ public:
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		Renderent::Ref<Renderent::IndexBuffer> square_IB;
-		square_IB.reset(Renderent::IndexBuffer::Create(6, squareIndices));
+		square_IB =Renderent::IndexBuffer::Create(6, squareIndices);
 		m_SquareVA->AddIndexBuffer(square_IB);
 
 		std::string vertexSrc = R"(
@@ -138,12 +140,12 @@ public:
 		auto textureShader = m_ShaderLibrary.Load("assets/shader/Texture.glsl");
 		
 		
-		m_Texture = Renderent::Texture2D::Create("Checkerboard.png");
+		m_Texture = Renderent::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Renderent::Texture2D::Create("ChernoLogo.png");
 
 
-		std::dynamic_pointer_cast<Renderent::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Renderent::OpenGLShader>(textureShader)->UploadUniformInt(0, "u_Texture");
+		textureShader->Bind();
+		textureShader->SetInt(0, "u_Texture");
 	}
 
 	void OnUpdate(Renderent::Timestep timestep) override {
@@ -160,7 +162,7 @@ public:
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 		m_FlatColorShader->Bind();
-		std::dynamic_pointer_cast<Renderent::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4(m_SquaresColor, "u_Color");
+		m_FlatColorShader->SetFloat4(m_SquaresColor, "u_Color");
 
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
@@ -228,13 +230,14 @@ private:
 
 class Sandbox : public Renderent::Application {
 public:
-	Sandbox() {
-		PushLayer(new ExampleLayer());
+	Sandbox():Sandbox(Renderent::WindowProps()) {
+
 	}
 
 	Sandbox(const Renderent::WindowProps& props)
 	: Renderent::Application(props) {
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox() {
@@ -244,5 +247,5 @@ public:
 
 
 Renderent::Application* Renderent::CreateApplication() {
-	return new Sandbox(Renderent::WindowProps("Sandbox App", 1920, 1080, true));
+	return new Sandbox(Renderent::WindowProps("Sandbox App", 1920, 1080, false));
 }

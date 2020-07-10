@@ -16,10 +16,13 @@ IncludeDir["GLAD"] =     "Renderent/vendor/GLAD/include"
 IncludeDir["ImGui"] =    "Renderent/vendor/imgui"
 IncludeDir["glm"] =      "Renderent/vendor/glm"
 IncludeDir["stb_image"] = "Renderent/vendor/stb_image"
+IncludeDir["box2d"] = "Sandbox/vendor/box2d/include"
 
 include "Renderent/vendor/glfw"
 include "Renderent/vendor/GLAD"
 include "Renderent/vendor/imgui"
+
+include "Sandbox/vendor/box2d"
 
 project "Renderent"
 	location "Renderent"
@@ -108,11 +111,13 @@ project "Sandbox"
 		"Renderent/vendor/spdlog/include",
 		"Renderent/src",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.box2d}"
 	}
 
 	links {
-		"Renderent"
+		"Renderent",
+		"box2d"
 	}
 	
 	filter "system:windows"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <glm/glm.hpp>
 
 namespace Renderent {
 
@@ -13,6 +14,14 @@ namespace Renderent {
 		virtual const std::string& GetName() const = 0;
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
+
+		virtual void SetMat4(const glm::mat4& matrix, const std::string& name) = 0;
+		virtual void SetMat3(const glm::mat3& matrix, const std::string& name) = 0;
+		virtual void SetFloat4(const glm::vec4& value, const std::string& name) = 0;
+		virtual void SetFloat3(const glm::vec3& value, const std::string& name) = 0;
+		virtual void SetFloat2(const glm::vec2& value, const std::string& name) = 0;
+		virtual void SetFloat(const float& value, const std::string& name) = 0;
+		virtual void SetInt(const int& value, const std::string& name) = 0;
 
 	};
 

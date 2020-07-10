@@ -18,3 +18,4 @@
 #include <unordered_set>
 
 #include "Renderent/Core/Log.h"
+#include "Renderent/Debug/Instrumentor.h"
