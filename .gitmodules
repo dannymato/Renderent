@@ -12,4 +12,4 @@
 	url = https://github.com/g-truc/glm
 [submodule "Sandbox/vendor/box2d"]
 	path = Sandbox/vendor/box2d
-	url = https://github.com/erincatto/box2d
+	url = https://github.com/dannymato/box2d
