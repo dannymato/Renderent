@@ -1,7 +1,6 @@
 #include "repch.h"
 #include "Renderer.h"
 
-#include "Renderent/Platform/OpenGL/OpenGLShader.h"
 #include "Renderent/Renderer/Renderer2D.h"
 
 namespace Renderent {
@@ -21,13 +20,14 @@ namespace Renderent {
 		const Ref<Shader>& shader, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4(m_sceneData->ViewProjectionMatrix, "u_ViewProjection");
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4(transform, "u_Transform");
+		shader->SetMat4(m_sceneData->ViewProjectionMatrix, "u_ViewProjection");
+		shader->SetMat4(transform, "u_Transform");
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}
 
 	void Renderer::Init() {
+		RE_PROFILE_FUNCTION();
 
 		RenderCommand::Init();
 		Renderer2D::Init();

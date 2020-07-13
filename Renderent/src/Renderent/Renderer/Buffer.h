@@ -131,12 +131,15 @@ namespace Renderent {
 		virtual ~VertexBuffer() {}
 
 		static Ref<VertexBuffer> Create(size_t size, float* data);
+		static Ref<VertexBuffer> Create(size_t size);
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
+
+		virtual void SetData(const void* data, uint32_t size) = 0;
 
 	};
 

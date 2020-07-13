@@ -247,5 +247,5 @@ public:
 
 
 Renderent::Application* Renderent::CreateApplication() {
-	return new Sandbox(Renderent::WindowProps("Sandbox App", 1920, 1080, false));
+	return new Sandbox(Renderent::WindowProps("Sandbox App", 1920, 1080, true));
 }

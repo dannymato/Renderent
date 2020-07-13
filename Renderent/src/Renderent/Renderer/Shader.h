@@ -22,6 +22,7 @@ namespace Renderent {
 		virtual void SetFloat2(const glm::vec2& value, const std::string& name) = 0;
 		virtual void SetFloat(const float& value, const std::string& name) = 0;
 		virtual void SetInt(const int& value, const std::string& name) = 0;
+		virtual void SetIntArray(int* values, uint32_t count, const std::string& name) = 0;
 
 	};
 

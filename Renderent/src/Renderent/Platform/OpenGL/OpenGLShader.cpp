@@ -21,6 +21,8 @@ namespace Renderent {
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
+		RE_PROFILE_FUNCTION();
+
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 
@@ -32,6 +34,7 @@ namespace Renderent {
 	}
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc,
 		const std::string& fragmentSrc) : m_Name(name) {
+		RE_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
@@ -51,37 +54,50 @@ namespace Renderent {
 
 	void OpenGLShader::SetMat4(const glm::mat4& matrix, const std::string& name)
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformMat4(matrix, name);
 	}
 
 	void OpenGLShader::SetMat3(const glm::mat3& matrix, const std::string& name)
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformMat3(matrix, name);
 	}
 
 	void OpenGLShader::SetFloat4(const glm::vec4& value, const std::string& name) 
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformFloat4(value, name);
 	}
 
 	void OpenGLShader::SetFloat3(const glm::vec3& value, const std::string& name) 
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformFloat3(value, name);
 	}
 
 	void OpenGLShader::SetFloat2(const glm::vec2& value, const std::string& name) 
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformFloat2(value, name);
 	}
 
 	void OpenGLShader::SetFloat(const float& value, const std::string& name) 
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformFloat(value, name);
 	}
 
 	void OpenGLShader::SetInt(const int& value, const std::string& name)
 	{
+		RE_PROFILE_FUNCTION();
 		UploadUniformInt(value, name);
+	}
+
+	void OpenGLShader::SetIntArray(int* values, uint32_t count, const std::string& name)
+	{
+		RE_PROFILE_FUNCTION();
+		UploadUniformIntArray(values, count, name);
 	}
 
 	void OpenGLShader::UploadUniformInt(const int& value, const std::string& name)
@@ -89,6 +105,13 @@ namespace Renderent {
 		GLint location = glGetUniformLocation(m_ProgramRef, name.c_str());
 		RE_CORE_ASSERT(location != -1, "Uniform location not found in shader");
 		glUniform1i(location, value);
+	}
+
+	void OpenGLShader::UploadUniformIntArray(int* values, uint32_t count, const std::string& name)
+	{
+		GLint location = glGetUniformLocation(m_ProgramRef, name.c_str());
+		RE_CORE_ASSERT(location != -1, "Uniform location not found in shader");
+		glUniform1iv(location, count, values);
 	}
 
 	void OpenGLShader::UploadUniformMat3(const glm::mat3& matrix, const std::string& name)
@@ -154,6 +177,8 @@ namespace Renderent {
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		RE_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken = "#type";
@@ -176,6 +201,7 @@ namespace Renderent {
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string> shaderSource)
 	{
+		RE_PROFILE_FUNCTION();
 
 		GLint program = glCreateProgram();
 		RE_CORE_ASSERT(shaderSource.size() <= 2, "Too many shaders only 2 shaders supported");
@@ -254,6 +280,7 @@ namespace Renderent {
 	}
 
 	OpenGLShader::~OpenGLShader() {
+		RE_PROFILE_FUNCTION();
 		glDeleteProgram(m_ProgramRef);
 	}
 }

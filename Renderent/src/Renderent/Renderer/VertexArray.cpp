@@ -8,6 +8,8 @@ namespace Renderent {
 
 	Ref<VertexArray> VertexArray::Create()
 	{
+		RE_PROFILE_FUNCTION();
+
 		switch (Renderer::GetAPI()) {
 			case RendererAPI::API::None:
 				RE_CORE_ASSERT(false, "None API is not supported");

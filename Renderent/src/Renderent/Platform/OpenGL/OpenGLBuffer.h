@@ -9,6 +9,7 @@ namespace Renderent {
 	public:
 
 		OpenGLVertexBuffer(size_t size, float* vertices);
+		OpenGLVertexBuffer(size_t size);
 
 		virtual ~OpenGLVertexBuffer();
 
@@ -19,6 +20,8 @@ namespace Renderent {
 		virtual void SetLayout(const BufferLayout& layout) override {
 			m_BufferLayout = layout;
 		}
+
+		virtual void SetData(const void* data, uint32_t size) override;
 
 	private:
 		uint32_t m_RendererID;

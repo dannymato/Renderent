@@ -14,6 +14,8 @@ namespace Renderent {
 	}
 
 	void OpenGLContext::Init() {
+		RE_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -26,6 +28,8 @@ namespace Renderent {
 	}
 
 	void OpenGLContext::SwapBuffers() {
+		RE_PROFILE_FUNCTION();
+
 		
 		glfwSwapBuffers(m_WindowHandle);
 	}

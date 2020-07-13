@@ -24,13 +24,6 @@ public:
 		float velChange = desiredVel - vel.x;
 		float impulse = physicsObject->GetMass() * velChange;
 		physicsObject->ApplyLinearImpulse(b2Vec2(impulse, 0), physicsObject->GetWorldCenter(), true);
-
-		/*if (Renderent::Input::IsKeyPressed(RE_KEY_UP)) {
-			
-		}
-		else if (Renderent::Input::IsKeyPressed(RE_KEY_DOWN)) {
-			
-		}*/
 	}
 
 	void processEvent(Renderent::KeyPressedEvent& e) {
@@ -54,7 +47,7 @@ public:
 		physicsObject = world.CreateBody(&bodyDef);
 
 		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(m_Size.x / 2.0f, m_Size.y / 2.0f);
+		dynamicBox.SetAsBox((m_Size.x * 0.99f ) / 2.0f, (m_Size.y * 0.99f) / 2.0f);
 
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &dynamicBox;
@@ -92,7 +85,7 @@ public:
 		physicsObject = world.CreateBody(&bodyDef);
 
 		b2PolygonShape boxShape;
-		boxShape.SetAsBox(size.x / 2.0f, size.y / 2.0f);
+		boxShape.SetAsBox((size.x * 0.99f) / 2.0f, (size.y * 0.99f) / 2.0f);
 		
 		physicsObject->CreateFixture(&boxShape, 0.0f);
 	}
@@ -134,5 +127,7 @@ private:
 	Player* m_Player;
 	b2World* m_World;
 	Floor* m_Floor;
+
+	float m_CurrentTime = 0.0f;
 };
 

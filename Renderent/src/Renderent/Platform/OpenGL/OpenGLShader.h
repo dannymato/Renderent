@@ -26,10 +26,12 @@ namespace Renderent {
 		virtual void SetFloat2(const glm::vec2& value, const std::string& name) override;
 		virtual void SetFloat(const float& value, const std::string& name) override;
 		virtual void SetInt(const int& value, const std::string& name) override;
+		virtual void SetIntArray(int* values, uint32_t count, const std::string& name) override;
 
 		virtual const std::string& GetName() const override { return m_Name; };
 
 		void UploadUniformInt(const int& value, const std::string& name);
+		void UploadUniformIntArray(int* values, uint32_t count, const std::string& name);
 
 		void UploadUniformMat3(const glm::mat3& matrix, const std::string& name);
 		void UploadUniformMat4(const glm::mat4& matrix, const std::string& name);

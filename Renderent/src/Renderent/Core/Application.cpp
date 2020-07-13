@@ -15,7 +15,9 @@ namespace Renderent {
 	Application::Application() : Application::Application(WindowProps()) {}
 
 	Application::Application(const WindowProps& props) {
-		
+
+		RE_PROFILE_FUNCTION();
+	
 		RE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -34,16 +36,19 @@ namespace Renderent {
 	}
 
 	void Application::PushLayer(Layer* layer) {
+		RE_PROFILE_FUNCTION();
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer) {
+		RE_PROFILE_FUNCTION();
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e) {
-
+		RE_PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowClosedEvent>(RE_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizedEvent>(RE_BIND_EVENT_FN(Application::OnWindowResized));
@@ -58,23 +63,30 @@ namespace Renderent {
 
 
 	void Application::Run() {
-
+		RE_PROFILE_FUNCTION();
 		while (m_Running) {
 
+			RE_PROFILE_SCOPE("RunLoop");
 			float time = m_Window->GetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
 			if (!m_Minimized) {
-				// Run the on update for all the layers
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
+				{
+					RE_PROFILE_SCOPE("LayerStack OnUpdate");
+					// Run the on update for all the layers
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+				{
+					RE_PROFILE_SCOPE("LayerStack OnImGuiRender");
+					m_ImGuiLayer->Begin();
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+					m_ImGuiLayer->End();
+				}
 			}
 			// Run all imgui code
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 			
@@ -87,6 +99,8 @@ namespace Renderent {
 	}
 
 	bool Application::OnWindowResized(WindowResizedEvent& e) {
+
+		RE_PROFILE_FUNCTION();
 
 		if (e.GetWidth() == 0 || e.GetHeight() == 0) {
 			m_Minimized = true;
