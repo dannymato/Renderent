@@ -26,5 +26,8 @@
     <ClInclude Include="src\Sandbox2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

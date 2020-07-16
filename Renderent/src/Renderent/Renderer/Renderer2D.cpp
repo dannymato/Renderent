@@ -38,6 +38,8 @@ namespace Renderent {
 		uint32_t TextureSlotIndex = 1;
 
 		glm::vec4 QuadVertexPositions[4];
+
+		Renderer2D::Statistics Stats;
 	};
 
 	static Renderer2DStorage s_Data;
@@ -135,6 +137,16 @@ namespace Renderent {
 		}
 
 		RenderCommand::DrawIndexed(s_Data.QuadVertexArray, s_Data.QuadIndexCount);
+		s_Data.Stats.DrawCalls++;
+	}
+
+	void Renderer2D::FlushandReset() {
+		EndScene();
+
+		s_Data.QuadIndexCount = 0;
+		s_Data.QuadVertexBufferPtr = s_Data.QuadVertexBufferBase;
+
+		s_Data.TextureSlotIndex = 1;
 	}
 
 	// Primitives
@@ -147,6 +159,9 @@ namespace Renderent {
 
 		RE_PROFILE_FUNCTION();
 
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 		
 		float texIndex = 0.0f;
 		float texScale = 1.0f;
@@ -184,6 +199,8 @@ namespace Renderent {
 
 		s_Data.QuadIndexCount += 6;
 
+		s_Data.Stats.QuadCount++;
+
 		//s_Data.TextureShader->SetFloat4(color, "u_Color");
 		//s_Data.WhiteTexture->Bind();
 		//glm::mat4 transform = glm::translate(glm::mat4(1.0f), position);
@@ -201,6 +218,10 @@ namespace Renderent {
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, float textureScale) {
 		
 		RE_PROFILE_FUNCTION();
+
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 		
 		glm::vec2 halfSize = size / 2.0f;
 
@@ -252,6 +273,8 @@ namespace Renderent {
 		s_Data.QuadVertexBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
 		
 		/*s_Data.TextureShader->SetFloat4(glm::vec4(1.0f), "u_Color");
 		s_Data.TextureShader->SetFloat(textureScale, "u_TexScale");
@@ -275,6 +298,10 @@ namespace Renderent {
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& tintColor, float textureScale)
 	{
 		RE_PROFILE_FUNCTION();
+
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 
 		glm::vec2 halfSize = size / 2.0f;
 
@@ -325,6 +352,7 @@ namespace Renderent {
 
 		s_Data.QuadIndexCount += 6;
 
+		s_Data.Stats.QuadCount++;
 
 		/*s_Data.TextureShader->SetFloat4(tintColor, "u_Color");
 		s_Data.TextureShader->SetFloat(textureScale, "u_TexScale");
@@ -346,6 +374,10 @@ namespace Renderent {
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4 color)
 	{
+
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 
 		float textureIndex = 0.0f;
 		float textureScale = 1.0f;
@@ -383,6 +415,8 @@ namespace Renderent {
 		s_Data.QuadVertexBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
 	}
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, float textureScale)
@@ -392,7 +426,10 @@ namespace Renderent {
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, float textureScale)
 	{
-		glm::vec2 halfSize = size / 2.0f;
+
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 
 		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 
@@ -443,6 +480,8 @@ namespace Renderent {
 		s_Data.QuadVertexBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
 	}
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4 color, float textureScale)
@@ -453,6 +492,10 @@ namespace Renderent {
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4 color, float textureScale)
 	{
 		RE_PROFILE_FUNCTION();
+
+		if (s_Data.QuadIndexCount >= s_Data.MaxIndices) {
+			FlushandReset();
+		}
 
 		float textureIndex = 0.0f;
 
@@ -501,6 +544,18 @@ namespace Renderent {
 		s_Data.QuadVertexBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
+	}
+
+	void Renderer2D::ResetStats()
+	{
+		memset(&s_Data.Stats, 0, sizeof(Statistics));
+	}
+
+	Renderer2D::Statistics Renderer2D::GetStats()
+	{
+		return s_Data.Stats;
 	}
 
 	
