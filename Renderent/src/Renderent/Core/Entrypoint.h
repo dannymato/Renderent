@@ -9,13 +9,13 @@ extern Renderent::Application* Renderent::CreateApplication();
 int main(int argc, char** argv) {
 	
 	Renderent::Log::init();
-	RE_PROFILE_BEGIN_SESSION("Startup", "RenderentProfile-Startup.json");
+	RE_PROFILE_BEGIN_SESSION("Startup", "RenderentStartup-Profile.json");
 	auto app = Renderent::CreateApplication();
 	RE_PROFILE_END_SESSION();
-	RE_PROFILE_BEGIN_SESSION("Running", "RenderentProfile-Running.json");
+	RE_PROFILE_BEGIN_SESSION("Running", "RenderentRunning-Profile.json");
 	app->Run();
 	RE_PROFILE_END_SESSION();
-	RE_PROFILE_BEGIN_SESSION("Shutdown", "RenderentProfile-Shutdown.json");
+	RE_PROFILE_BEGIN_SESSION("Shutdown", "RenderentShutdown-Profile.json");
 	delete app;
 	RE_PROFILE_END_SESSION();
 }

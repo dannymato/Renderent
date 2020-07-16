@@ -6,3 +6,6 @@ bin*/
 # Files
 Makefile
 *.user
+
+# Profile Files
+*Profile.json
