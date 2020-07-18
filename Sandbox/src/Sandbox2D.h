@@ -6,6 +6,7 @@
 #include <box2d/b2_world.h>
 
 #include "Entities.h"
+#include "ParticleSystem.h"
 
 class Sandbox2D : public Renderent::Layer {
 
@@ -28,11 +29,22 @@ private:
 	glm::vec4 m_SquareColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 	Renderent::Ref<Renderent::Texture2D> m_Checkerboard;
+	Renderent::Ref<Renderent::Texture2D> m_Spritesheet;
+
+	Renderent::Ref<Renderent::SubTexture2D> m_TextureStairs, m_TextureBarrel, m_TextureTree, m_TextureGround;
+
+	Renderent::Ref<Renderent::Framebuffer> framebuffer;
 
 	Player* m_Player;
 	b2World* m_World;
 	Floor* m_Floor;
 
 	float m_CurrentTime = 0.0f;
+
+	ParticleProps m_Particle;
+	ParticleSystem m_ParticleSystem;
+
+	std::unordered_map<char, Renderent::Ref<Renderent::SubTexture2D>> s_TextureMap;
+	uint32_t m_MapWidth, m_MapHeight;
 };
 

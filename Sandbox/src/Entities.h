@@ -2,12 +2,15 @@
 
 #include <box2d/b2_body.h>
 #include <box2d/b2_fixture.h>
+#include <box2d/b2_math.h>
 #include <box2d/b2_polygon_shape.h>
 #include <box2d/b2_shape.h>
 #include <box2d/b2_world.h>
 #include <glm/glm.hpp>
 
 #include <Renderent.h>
+
+#include "ParticleSystem.h"
 
 
 class Player {
@@ -28,6 +31,13 @@ public:
 		physicsObject->ApplyLinearImpulse(b2Vec2(impulse, 0), physicsObject->GetWorldCenter(), true);
 	}
 
+	void OnUpdate(Renderent::Timestep ts, ParticleSystem& pSystem) {
+		for (float y = physicsObject->GetPosition().y - m_Size.y / 2.0f; y < physicsObject->GetPosition().y + m_Size.y / 2.0f; y += 0.07f) {
+			particle.Position = { physicsObject->GetPosition().x, y };
+			pSystem.Emit(particle);
+		}
+	}
+
 	void processEvent(Renderent::KeyPressedEvent& e) {
 		if (e.GetKeyCode() == RE_KEY_SPACE && !e.GetIsRepeated()) {
 			float desiredVel = 5;
@@ -43,6 +53,7 @@ public:
 		glm::vec4 color, b2World& world)
 		: m_Position(position), m_Color(color), m_Size(size) {
 
+		// Setup Physics
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(m_Position.x, m_Position.y);
@@ -57,6 +68,17 @@ public:
 		fixtureDef.friction = 0.3f;
 
 		physicsObject->CreateFixture(&fixtureDef);
+
+
+		particle.Velocity = { 0.0f, 0.0f };
+		particle.Position = { 0.0f, 0.0f };
+		particle.VelocityVariation = { 1.0f, 2.0f };
+		particle.ColorBegin = { 0.0f, 0.4f, 1.0f, 0.4f };
+		particle.ColorEnd = { 1.0f, 0.4f, 1.0f, 0.4f };
+		particle.SizeBegin = size.x / 10.0f;
+		particle.SizeVariation = 0.03;
+		particle.SizeEnd = 0.0f;
+		particle.LifeTime = 1.0f;
 	}
 
 	glm::vec2 GetPosition() const { return { physicsObject->GetPosition().x, physicsObject->GetPosition().y }; }
@@ -71,7 +93,7 @@ private:
 	const float movementSpeed = 1.0f;
 
 	b2Body* physicsObject;
-
+	ParticleProps particle;
 };
 
 

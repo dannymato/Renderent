@@ -93,6 +93,10 @@ namespace Renderent {
 		}
 	}
 
+	void Application::Close() {
+		m_Running = false;
+	}
+
 	bool Application::OnWindowClose(WindowClosedEvent& e) {
 		m_Running = false;
 		return true;

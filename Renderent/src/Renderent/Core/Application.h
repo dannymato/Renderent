@@ -29,6 +29,8 @@ namespace Renderent {
 		inline Window& GetWindow() { return *m_Window; }
 
 		static inline Application& Get() { return *s_Instance; }
+
+		void Close();
 	
 
 	private:

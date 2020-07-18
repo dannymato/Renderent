@@ -3,6 +3,9 @@
 #include <glm/glm.hpp>
 
 namespace Renderent {
+
+	
+
 	class OrthographicCamera
 	{
 	public:

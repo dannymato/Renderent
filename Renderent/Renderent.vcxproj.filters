@@ -99,6 +99,9 @@
     <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Renderent\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\Renderent\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Renderent\Platform\OpenGL</Filter>
     </ClInclude>
@@ -126,6 +129,9 @@
     <ClInclude Include="src\Renderent\Renderer\CameraController.h">
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderent\Renderer\Framebuffer.h">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Renderent\Renderer\GraphicsContext.h">
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
@@ -142,6 +148,9 @@
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderent\Renderer\Shader.h">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderent\Renderer\SubTexture2D.h">
       <Filter>src\Renderent\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderent\Renderer\Texture.h">
@@ -182,6 +191,9 @@
     <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Renderent\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>src\Renderent\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Renderent\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Renderent\Platform\OpenGL</Filter>
     </ClCompile>
@@ -209,6 +221,9 @@
     <ClCompile Include="src\Renderent\Renderer\CameraController.cpp">
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderent\Renderer\Framebuffer.cpp">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Renderent\Renderer\RenderCommand.cpp">
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
@@ -222,6 +237,9 @@
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderent\Renderer\Shader.cpp">
+      <Filter>src\Renderent\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderent\Renderer\SubTexture2D.cpp">
       <Filter>src\Renderent\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderent\Renderer\Texture.cpp">

@@ -24,7 +24,7 @@ namespace Renderent {
 			return m_RendererID == ((OpenGLTexture2D&)other).m_RendererID;
 		}
 
-		const uint32_t GetRendererID() const { return m_RendererID; }
+		uint32_t GetRendererID() const { return m_RendererID; }
 
 	private:
 		std::string m_Path;
