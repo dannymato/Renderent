@@ -76,7 +76,7 @@ public:
 		particle.ColorBegin = { 0.0f, 0.4f, 1.0f, 0.4f };
 		particle.ColorEnd = { 1.0f, 0.4f, 1.0f, 0.4f };
 		particle.SizeBegin = size.x / 10.0f;
-		particle.SizeVariation = 0.03;
+		particle.SizeVariation = 0.03f;
 		particle.SizeEnd = 0.0f;
 		particle.LifeTime = 1.0f;
 	}

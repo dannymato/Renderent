@@ -33,7 +33,7 @@ private:
 
 	Renderent::Ref<Renderent::SubTexture2D> m_TextureStairs, m_TextureBarrel, m_TextureTree, m_TextureGround;
 
-	Renderent::Ref<Renderent::Framebuffer> framebuffer;
+	Renderent::Ref<Renderent::Framebuffer> m_Framebuffer;
 
 	Player* m_Player;
 	b2World* m_World;

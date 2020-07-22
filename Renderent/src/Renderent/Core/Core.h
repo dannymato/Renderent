@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#ifdef RE_PLATFORM_WINDOWS
+#if defined(RE_PLATFORM_WINDOWS)
 	#ifdef RE_DYNAMIC_LINK
 		#ifdef  RE_BUILD_DLL
 			#define RENDERENT_API __declspec(dllexport)
@@ -12,7 +12,7 @@
 	#else
  		#define RENDERENT_API 
 	#endif
-#elif RE_PLATFORM_LINUX
+#elif defined(RE_PLATFORM_LINUX)
 	#define RENDERENT_API
 #else
 	#error Renderent only supports Windows and Linux

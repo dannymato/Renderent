@@ -19,9 +19,11 @@ namespace Renderent {
 
 		virtual uint32_t GetColorAttachmentRendererID() const override { return m_ColorAttachment; }
 
+		virtual void Resize(uint32_t width, uint32_t height);
+
 	private:
-		uint32_t m_RendererID;
-		uint32_t m_ColorAttachment, m_DepthAttachment;
+		uint32_t m_RendererID = -1;
+		uint32_t m_ColorAttachment = -1, m_DepthAttachment = -1;
 		FramebufferProps m_Props;
 	};
 

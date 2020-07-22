@@ -8,6 +8,10 @@ workspace "Engine"
 		"Dist"
 	}
 
+	flags {
+		"MultiProcessorCompile"
+	}
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
@@ -123,10 +127,16 @@ project "Sandbox"
 	filter "system:windows"
 		staticruntime "On"
 		systemversion "latest"
+		defines {
+			"RE_PLATFORM_WINDOWS"
+		}
 
 	filter "system:linux"
 		staticruntime "on"
 		systemversion "latest"
+		defines {
+			"RE_PLATFORM_LINUX"
+		}
 		links {
 			"Renderent",
 			"GLFW",
@@ -180,6 +190,12 @@ project "RenderEdit"
 	filter "system:windows"
 		staticruntime "On"
 		systemversion "latest"
+		links {
+			"Renderent"
+		}
+		defines {
+			"RE_PLATFORM_WINDOWS"
+		}
 
 	filter "system:linux"
 		staticruntime "on"
@@ -192,6 +208,9 @@ project "RenderEdit"
 			"X11",
 			"dl",
 			"pthread"
+		}
+		defines {
+			"RE_PLATFORM_LINUX"
 		}
 
 	filter "configurations:Debug" 

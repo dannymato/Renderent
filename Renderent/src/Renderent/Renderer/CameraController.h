@@ -31,6 +31,8 @@ namespace Renderent {
 		
 		const OrthographicCameraBounds& GetBounds() const { return m_Bounds; }
 
+		void ChangeAspectRatio(float aspectRatio) { m_AspectRatio = aspectRatio; CalculateView(); }
+
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizedEvent& e);
